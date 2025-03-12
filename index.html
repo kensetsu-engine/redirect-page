@@ -3,14 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting...</title>
+    <title>リダイレクト中...</title>
     <script>
-        setTimeout(function() {
+        // クエリパラメータ（?email=xxx@example.com）を取得
+        function getQueryParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // メールアドレスを取得
+        const email = getQueryParam("email");
+
+        if (email) {
+            // GAS にクリック記録を送信
+            fetch("https://script.google.com/macros/s/AKfycbyuTNbpegYKLVOj7x8wVIvXAtDc8oUhPovtJeCXqwVaxNgBrDoYV03MKDzTHDRv8rJY/exec?action=click&email=" + encodeURIComponent(email))
+                .then(() => {
+                    // 記録が終わったら建設円陣のページにリダイレクト
+                    window.location.href = "https://kensetsu-engine.jp/";
+                })
+                .catch(() => {
+                    // 失敗した場合もリダイレクト
+                    window.location.href = "https://kensetsu-engine.jp/";
+                });
+        } else {
+            // メールアドレスがなければ直接リダイレクト
             window.location.href = "https://kensetsu-engine.jp/";
-        }, 0);
+        }
     </script>
 </head>
 <body>
-    <p>Redirecting to <a href="https://kensetsu-engine.jp/">kensetsu-engine.jp</a>...</p>
+    <p>リダイレクト中...</p>
 </body>
 </html>
