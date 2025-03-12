@@ -32,7 +32,7 @@
 
         if (email) {
             // GAS にクリック記録を送信
-            fetch("https://script.google.com/macros/s/AKfycbyuTNbpegYKLVOj7x8wVIvXAtDc8oUhPovtJeCXqwVaxNgBrDoYV03MKDzTHDRv8rJY/exec?action=click&email=" + encodeURIComponent(email))
+            fetch("https://script.google.com/macros/s/AKfycbysnyEGtErShx92NTe3lfwtrglup_-xMExhuHmDs4EobPFRsbm-MStnzWdoGtPShhj8/exec?action=click&email=" + encodeURIComponent(email))
                 .then(() => {
                     // 記録が終わったら建設円陣のページにリダイレクト
                     window.location.href = "https://kensetsu-engine.jp/";
